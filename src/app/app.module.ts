@@ -18,6 +18,11 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  FirebaseOptionsToken,
+  FirebaseAppNameToken,
+  FirebaseAppConfigToken
+} from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
@@ -51,7 +56,9 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
       {path: 'my/orders', component: MyOrdersComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: FirebaseOptionsToken, useValue: environment.firebase }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
