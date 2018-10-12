@@ -1,3 +1,5 @@
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -57,7 +59,10 @@ import {
     ])
   ],
   providers: [
-    { provide: FirebaseOptionsToken, useValue: environment.firebase }
+    { provide: FirebaseOptionsToken, useValue: environment.firebase },
+
+    AuthService
+    //AuthGuard
   ],
   bootstrap: [AppComponent]
 })
