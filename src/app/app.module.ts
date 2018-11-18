@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { environment } from './../environments/environment';
@@ -19,7 +20,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   FirebaseOptionsToken,
   FirebaseAppNameToken,
@@ -47,21 +48,22 @@ import {
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'products', component: ProductsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard]}
+      { path: '', component: HomeComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard] }
       // {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]}
     ])
   ],
   providers: [
     { provide: FirebaseOptionsToken, useValue: environment.firebase },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
